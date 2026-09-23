@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Call Our Hero (COH) — Ekologik Aqlli Yordamchi & Logistika Platformasi</title>
+  <meta name="description" content="Call Our Hero (COH) — chiqindilarni saralash, 50 kishilik jamoaviy birdamlik va tozalik qahramonlarini tezkor chaqirish platformasi.">
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦸‍♂️</text></svg>">
+</head>
+<body>
+
+  <!-- ================= 1. LOGIN / ROLE SELECTION GATEWAY ================= -->
+  <section class="login-screen" id="loginScreen">
+    <div class="login-gateway-box">
+      
+      <div class="login-header">
+        <div class="login-brand-badge">
+          <span>🦸‍♂️</span> Call Our Hero • Eko-Tizim
+        </div>
+        <h1 class="login-title">
+          Toza Mahalla Uchun <span>Birlashamiz!</span>
+        </h1>
+        <p class="login-sub">
+          Davom etish uchun o'z yo'nalishingizni (Aholi yoki Xodimlar/Logistika) tanlang:
+        </p>
+      </div>
+
+      <!-- Two Split Cards -->
+      <div class="role-split-grid">
+        
+        <!-- Role 1: Citizen / Aholi -->
+        <div class="role-card citizen">
+          <div class="role-card-header">
+            <div class="role-icon-box">🏡</div>
+            <div class="role-title-text">
+              <h3>Aholi Portali</h3>
+              <span>Mahalla Eko-Hamjamiyati</span>
+            </div>
+          </div>
+          <p class="role-desc">
+            Mahalladoshlar bilan <strong>50 kishilik</strong> chiqindi topshirish marrasiga erishing, chiqindilarni saralang va Qahramonlarimizni chaqiring.
+          </p>
+          
+          <form class="role-form" id="citizenLoginForm">
+            <div class="form-group">
+              <label for="citizenNameInput">Ismingiz / Xonadon egasi:</label>
+              <input type="text" id="citizenNameInput" class="form-control" placeholder="Masalan: Sardor Aliyev" value="Sardor Aliyev" required>
+            </div>
+            <div class="form-group">
+              <label for="citizenMahallaSelect">Mahallangizni tanlang:</label>
+              <select id="citizenMahallaSelect" class="form-control">
+                <option value="navroz">"Navro'z" MFY (Toshkent)</option>
+                <option value="chilonzor9">"Chilonzor-9" MFY</option>
+                <option value="yunusobod14">"Yunusobod-14" MFY</option>
+                <option value="mirobod4">"Mirobod-4" MFY</option>
+                <option value="buyukipak">"Buyuk Ipak Yo'li" MFY</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-role-enter green">
+              <span>🌱</span> Aholi Sifatida Kirish
+            </button>
+          </form>
+        </div>
+
+        <!-- Role 2: Logistics / Workers -->
+        <div class="role-card worker">
+          <div class="role-card-header">
+            <div class="role-icon-box">⚡</div>
+            <div class="role-title-text">
+              <h3>Xodimlar & Logistika</h3>
+              <span>COH Dispetcher & Brigada</span>
+            </div>
+          </div>
+          <p class="role-desc">
+            <strong>50+ to'plangan Qizil Statusdagi</strong> hududlarni nazorat qiling, avtoparkni boshqaring va AI yordamida optimal marshrutlarni belgilang.
+          </p>
+
+          <form class="role-form" id="workerLoginForm">
+            <div class="form-group">
+              <label for="workerIdInput">Xodim / Dispetcher ID:</label>
+              <input type="text" id="workerIdInput" class="form-control" placeholder="Masalan: HERO-07" value="HERO-DISPATCH-01" required>
+            </div>
+            <div class="form-group">
+              <label for="workerRoleSelect">Lavozim:</label>
+              <select id="workerRoleSelect" class="form-control">
+                <option value="dispatcher">Operatsion Dispetcher AI</option>
+                <option value="driver">Hero Truck Haydovchisi</option>
+                <option value="lead">Logistika Bo'lim Boshlig'i</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-role-enter cyan">
+              <span>⚡</span> Tizimga Kirish (Dispatcher Hub)
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 2. MAIN APPLICATION (AFTER LOGIN) ================= -->
+  <div class="main-app-wrap" id="mainAppWrap">
+    
+    <!-- Top Navbar -->
+    <header class="navbar">
+      <div class="container">
+        <div class="nav-inner">
+          
+          <!-- Logo & Brand -->
+          <div class="logo-brand" id="brandLogoBtn">
+            <div class="logo-icon">🦸‍♂️</div>
+            <div class="logo-text-wrap">
+              <div class="logo-title">
+                Call Our Hero <span class="logo-badge">COH</span>
+              </div>
+              <div class="logo-sub">Toza Mahalla, Qahramonlar Bilan</div>
+            </div>
+          </div>
+
+          <!-- Mode Switcher (Citizen / Logistics) -->
+          <div class="mode-switcher" id="portalSwitcher">
+            <button class="mode-btn active" id="citizenPortalBtn" data-target="citizen-view">
+              <span>🌱</span> Aholi Portali
+            </button>
+            <button class="mode-btn logistics" id="logisticsPortalBtn" data-target="logistics-view">
+              <span>⚡</span> Logistika & Tizim
+            </button>
+          </div>
+
+          <!-- Nav Actions -->
+          <div class="nav-actions">
+            <div class="user-badge-pill" id="userBadgePill">
+              <span class="dot"></span>
+              <span id="navUserName">Sardor Aliyev</span>
+            </div>
+            <button class="icon-btn" id="soundToggleBtn" title="Ovoz (Yoqish/O'chirish)">
+              <span id="soundIcon">🔊</span>
+            </button>
+            <button class="btn-logout" id="logoutBtn" title="Chiqish / Rolni o'zgartirish">
+              <span>🚪</span> Chiqish
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= CITIZEN PORTAL (AHOLI) ================= -->
+    <main class="portal-view active" id="citizen-view">
+      
+      <!-- Hero Banner -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="hero-banner-card">
+            <div class="hero-banner-bg"></div>
+            <div class="hero-content">
+              <div class="hero-tag">
+                <span>🌟</span> Jamoaviy Tozalik Harakati
+              </div>
+              <h1 class="hero-title">
+                Chiqindini Saralang, <br>
+                <span class="highlight">Qahramonimizni Chaqiring!</span>
+              </h1>
+              <p class="hero-desc">
+                Mahallangizda <strong>50 kishining chiqindisi</strong> yig'ilsagina maxsus xizmat xodimlari yetib keladi. Qo'shnilar bilan hamkorlik qiling va toza mahallaga birga erishing!
+              </p>
+              <div class="hero-cta-group">
+                <button class="btn-primary" id="scrollTrackerBtn">
+                  <span>🚀</span> 50 Kishilik Safga Qo'shilish
+                </button>
+                <button class="btn-secondary" id="openShareModalBtn">
+                  <span>📢</span> Qo'shnilarni Taklif Qilish
+                </button>
+              </div>
+            </div>
+            <div class="hero-stats-side">
+              <div class="stat-glass-box">
+                <div class="stat-icon-wrap green">🚛</div>
+                <div class="stat-info">
+                  <div class="stat-num" id="totalTripsCount">148+</div>
+                  <div class="stat-lbl">Muvaffaqiyatli Safarlar</div>
+                </div>
+              </div>
+              <div class="stat-glass-box">
+                <div class="stat-icon-wrap cyan">♻️</div>
+                <div class="stat-info">
+                  <div class="stat-num" id="totalWasteRecycled">12.4 Tonna</div>
+                  <div class="stat-lbl">Saralangan Chiqindi</div>
+                </div>
+              </div>
+              <div class="stat-glass-box">
+                <div class="stat-icon-wrap amber">🏡</div>
+                <div class="stat-info">
+                  <div class="stat-num" id="activeMahallasCount">18 Mahalla</div>
+                  <div class="stat-lbl">Faol Eko-Hamjamiyatlar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 50-Person Goal Tracker -->
+      <section class="section-tracker" id="tracker-section">
+        <div class="container">
+          <div class="tracker-card">
+            <div class="tracker-header">
+              <div class="tracker-header-left">
+                <h2><span>🎯</span> 50 Kishilik "Call Our Hero" Marraga Intilish</h2>
+                <p>Har bir hududda 50 ta ariza yig'ilishi bilan tozalik xizmati yo'lga chiqadi.</p>
+              </div>
+              <div class="mahalla-select-wrap">
+                <label for="mahallaSelector">Hududingiz:</label>
+                <select id="mahallaSelector" class="mahalla-select">
+                  <option value="navroz">"Navro'z" MFY (Toshkent)</option>
+                  <option value="chilonzor9">"Chilonzor-9" MFY</option>
+                  <option value="yunusobod14">"Yunusobod-14" MFY</option>
+                  <option value="mirobod4">"Mirobod-4" MFY</option>
+                  <option value="buyukipak">"Buyuk Ipak Yo'li" MFY</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="tracker-main-grid">
+              <div class="tracker-progress-col">
+                <div class="progress-numbers-bar">
+                  <div style="display:flex; align-items:baseline; gap:8px;">
+                    <span class="big-number" id="currentRegisteredCount">38</span>
+                    <span class="goal-number">/ 50 kishi</span>
+                  </div>
+                  <div class="percentage-badge" id="progressPercentage">76%</div>
+                </div>
+
+                <div class="progress-track-outer">
+                  <div class="progress-track-fill" id="progressBarFill" style="width: 76%;"></div>
+                </div>
+
+                <div class="progress-milestones">
+                  <span>0 (Boshlanish)</span>
+                  <span>25 (Yarim yo'l)</span>
+                  <span>40 (Oz qoldi)</span>
+                  <span style="color: var(--emerald-light); font-weight: 700;">50 (Call Our Hero!)</span>
+                </div>
+
+                <div class="tracker-notice-box">
+                  <span style="font-size: 18px;">💡</span>
+                  <div id="trackerRemainingText">
+                    Sizning mahallangizda hozircha <strong>38/50 kishi</strong> to'plandi. Qahramonlar kelishi uchun yana <strong>12 kishi</strong> qoldi!
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hero Action Box -->
+              <div class="hero-action-box">
+                <div class="hero-action-status-pill waiting" id="heroStatusPill">
+                  ⏳ 12 Ariza Qoldi
+                </div>
+                <button class="btn-call-hero-mega" id="callHeroActionBtn">
+                  <span>🦸‍♂️</span> CALL OUR HERO!
+                </button>
+                <button class="btn-join-request" id="joinRequestBtn">
+                  <span>➕</span> Mening Arizamni Qo'shish (+1)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sorting Academy & AI Waste Classifier -->
+      <section class="section-sorting">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">♻️ SARALASH AKADEMIYASI</span>
+            <h2>Chiqindilarni Qanday Saralash Kerak?</h2>
+            <p>Tozalik xodimlariga yordam bering: chiqindilarni to'g'ri saralab topshirish tabiatni asrashning 1-qadamidir.</p>
+          </div>
+
+          <div class="sorting-grid">
+            <div class="sort-card plastic" data-category="plastic">
+              <div class="sort-icon-box">🔵</div>
+              <h3>Plastik Idishlar</h3>
+              <p>Butilkalar, flakonlar, qadoqlar va kanistralar.</p>
+              <ul class="sort-rules-list">
+                <li><span class="dot"></span> Ichini chayqab tozalang</li>
+                <li><span class="dot"></span> Siqib, hajmini kichraytiring</li>
+                <li><span class="dot"></span> Qopqog'ini alohida ajrating</li>
+              </ul>
+            </div>
+
+            <div class="sort-card paper" data-category="paper">
+              <div class="sort-icon-box">📦</div>
+              <h3>Qog'oz & Karton</h3>
+              <p>Qutilar, kitob-jurnallar, toza qog'ozlar va paketlar.</p>
+              <ul class="sort-rules-list">
+                <li><span class="dot"></span> Quruq holda saqlang</li>
+                <li><span class="dot"></span> Yassi qilib taxlang</li>
+                <li><span class="dot"></span> Yog'li qutilarni aralashtirmang</li>
+              </ul>
+            </div>
+
+            <div class="sort-card organic" data-category="organic">
+              <div class="sort-icon-box">🍏</div>
+              <h3>Organik Chiqindi</h3>
+              <p>Meva-sabzavot po'stloqlari, barglar, oziq-ovqat qoldiqlari.</p>
+              <ul class="sort-rules-list">
+                <li><span class="dot"></span> Quruq chiqindiga aralashtirmang</li>
+                <li><span class="dot"></span> Maxsus idishda jamlang</li>
+                <li><span class="dot"></span> Kompost uchun juda foydali</li>
+              </ul>
+            </div>
+
+            <div class="sort-card ewaste" data-category="ewaste">
+              <div class="sort-icon-box">🔋</div>
+              <h3>Maxsus & Batareyalar</h3>
+              <p>Batareykalar, akkumulyator, lampochkalar va simlar.</p>
+              <ul class="sort-rules-list">
+                <li><span class="dot"></span> Alohida qutiga soling</li>
+                <li><span class="dot"></span> Umumiy axlatga tashlamang</li>
+                <li><span class="dot"></span> Xodimlarga topshiring</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- AI Classifier Search -->
+          <div class="ai-classifier-box">
+            <div class="classifier-text">
+              <h4><span>🤖</span> AI Chiqindi Saralovchi Yordamchi</h4>
+              <p>Qaysi chiqindini qayerga tashlashni bilmayapsizmi? Nomini yozing, AI darhol toifasini aniqlaydi.</p>
+            </div>
+            <form class="classifier-form" id="aiClassifierForm">
+              <input type="text" id="wasteSearchInput" class="classifier-input" placeholder="Masalan: Baklashka, banan po'sti, batareyka..." required>
+              <button type="submit" class="btn-primary" style="padding: 10px 18px;">
+                <span>🔍</span> Tekshirish
+              </button>
+            </form>
+            <div class="classifier-result-modal" id="classifierResultBox"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Chat & Leaderboard -->
+      <section class="section-two-col">
+        <div class="container">
+          <div class="two-col-grid">
+            
+            <!-- Citizen AI Chat -->
+            <div class="chat-card">
+              <div class="chat-header">
+                <div class="chat-user-info">
+                  <div class="ai-avatar">
+                    <img src="assets/mascot_avatar.jpg" alt="COH Hero Mascot" onerror="this.innerHTML='🦸‍♂️'">
+                  </div>
+                  <div class="chat-user-text">
+                    <h4>Call Our Hero AI <span style="font-size: 11px; color:var(--emerald-light);">● Onlayn</span></h4>
+                    <p>Aholi uchun g'amxo'r aqlli yordamchi</p>
+                  </div>
+                </div>
+                <button class="icon-btn" id="clearChatBtn" title="Chatni tozalash">🔄</button>
+              </div>
+
+              <div class="chat-body" id="citizenChatBody">
+                <div class="chat-bubble-wrap ai">
+                  <div class="bubble">
+                    Assalomu alaykum! 🌱 Men <strong>"Call Our Hero"</strong> ilovasining aqlli yordamchisiman. Mahallangizdagi holat, chiqindilarni saralash yoki qahramonlarimizni chaqirish bo'yicha savollaringizga mamnuniyat bilan javob beraman!
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-quick-prompts">
+                <button class="quick-chip" data-query="Bizning mahallada nechta odam yig'ildi?">📊 Mahalladagi holat</button>
+                <button class="quick-chip" data-query="Plastik idishlarni qanday tayyorlash kerak?">🔵 Plastik saralash</button>
+                <button class="quick-chip" data-query="Qahramonlar qachon yetib keladi?">🚛 Qachon keladi?</button>
+                <button class="quick-chip" data-query="Qo'shnilarimni qanday chorlasam bo'ladi?">🤝 Qo'shnilar birligi</button>
+              </div>
+
+              <div class="chat-footer">
+                <form class="chat-form" id="citizenChatForm">
+                  <input type="text" id="citizenChatInput" class="chat-input" placeholder="Xabaringizni yozing..." autocomplete="off">
+                  <button type="submit" class="btn-send">➤</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Mahalla Leaderboard -->
+            <div class="leaderboard-card">
+              <div class="card-title-sm">
+                <span>🏆</span> Eng Faol Eko-Mahallalar
+              </div>
+              <div class="leaderboard-list">
+                <div class="leaderboard-item">
+                  <div class="leader-left">
+                    <span class="rank-badge gold">1</span>
+                    <div>
+                      <div class="leader-name">"Navro'z" MFY</div>
+                      <div class="leader-sub">38 / 50 kishi (76%)</div>
+                    </div>
+                  </div>
+                  <div class="leader-score">4,850 pt</div>
+                </div>
+
+                <div class="leaderboard-item">
+                  <div class="leader-left">
+                    <span class="rank-badge silver">2</span>
+                    <div>
+                      <div class="leader-name">"Chilonzor-9" MFY</div>
+                      <div class="leader-sub">52 / 50 kishi (100%+) 🚨</div>
+                    </div>
+                  </div>
+                  <div class="leader-score">4,120 pt</div>
+                </div>
+
+                <div class="leaderboard-item">
+                  <div class="leader-left">
+                    <span class="rank-badge bronze">3</span>
+                    <div>
+                      <div class="leader-name">"Yunusobod-14" MFY</div>
+                      <div class="leader-sub">47 / 50 kishi (94%)</div>
+                    </div>
+                  </div>
+                  <div class="leader-score">3,980 pt</div>
+                </div>
+              </div>
+
+              <!-- Badges -->
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 14px;">
+                <div class="card-title-sm" style="font-size: 14px;">
+                  <span>🎖️</span> Sizning Eko-Nishonlaringiz
+                </div>
+                <div class="badges-grid">
+                  <div class="badge-item">
+                    <div class="badge-icon">🌱</div>
+                    <div class="badge-title">Ilk Qadam</div>
+                  </div>
+                  <div class="badge-item">
+                    <div class="badge-icon">🦸‍♂️</div>
+                    <div class="badge-title">Qahramon</div>
+                  </div>
+                  <div class="badge-item">
+                    <div class="badge-icon">💎</div>
+                    <div class="badge-title">Plastik</div>
+                  </div>
+                  <div class="badge-item">
+                    <div class="badge-icon">🤝</div>
+                    <div class="badge-title">Birdamlik</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ================= LOGISTICS & DISPATCH PORTAL (XODIMLAR) ================= -->
+    <section class="portal-view" id="logistics-view">
+      <div class="container">
+        
+        <div class="logistics-header-bar">
+          <div class="logistics-title-wrap">
+            <h1>
+              <span>⚡</span> Call Our Hero Logistics Hub
+            </h1>
+            <p style="color: var(--text-muted); font-size: 13.5px; margin-top: 2px;">
+              50+ to'plangan "Qizil Status"dagi hududlarni zudlik bilan boshqarish markazi.
+            </p>
+          </div>
+          <button class="btn-primary" id="openNewReportModalBtn" style="padding: 10px 18px;">
+            <span>📝</span> Yangi Safar Hisoboti
+          </button>
+        </div>
+
+        <!-- Red Status Alert Box -->
+        <div class="red-status-banner" id="redStatusBanner">
+          <div class="red-status-left">
+            <div class="red-status-icon">🚨</div>
+            <div class="red-status-info">
+              <h3 id="redStatusAlertTitle">QIZIL STATUS: "Chilonzor-9" da 52 nafar aholi to'plandi!</h3>
+              <p id="redStatusAlertDesc">Chiqindilarni olib chiqish uchun zudlik bilan Qahramonlar brigadasini yo'lga chiqaring.</p>
+            </div>
+          </div>
+          <button class="btn-dispatch-now" id="instantDispatchBtn">
+            <span>🚛</span> Brigadani Yo'naltirish
+          </button>
+        </div>
+
+        <!-- Logistics Main Grid -->
+        <div class="logistics-main-grid">
+          
+          <!-- Radar Visualizer -->
+          <div class="radar-map-card">
+            <div class="radar-header">
+              <div class="card-title-sm">
+                <span>📍</span> Hududlar Radari & Marshrut Tahlili
+              </div>
+              <div style="font-size: 11.5px; color: var(--text-dim);">
+                <span style="color: var(--crimson-light); font-weight:700;">● 50+ Qizil</span> | 
+                <span style="color: var(--amber-light); font-weight:700;">● 35+ Sariq</span>
+              </div>
+            </div>
+
+            <div class="radar-canvas-wrap">
+              <div class="radar-grid-bg"></div>
+              <div class="radar-rings"></div>
+
+              <div class="map-node red" style="top: 30%; left: 35%;" data-name="Chilonzor-9">
+                <div class="node-pin">🚨</div>
+                <div class="node-label">Chilonzor-9 (52)</div>
+              </div>
+
+              <div class="map-node yellow" style="top: 65%; left: 65%;" data-name="Yunusobod-14">
+                <div class="node-pin">⏳</div>
+                <div class="node-label">Yunusobod-14 (47)</div>
+              </div>
+
+              <div class="map-node green" style="top: 40%; left: 75%;" data-name="Navro'z">
+                <div class="node-pin">🏡</div>
+                <div class="node-label">Navro'z (38)</div>
+              </div>
+
+              <div class="map-node green" style="top: 75%; left: 25%;" data-name="Mirobod-4">
+                <div class="node-pin">🏡</div>
+                <div class="node-label">Mirobod-4 (29)</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 12px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+              <div>🤖 <strong>Optimal yo'l:</strong> Baza ➔ Chilonzor-9 (3.4 km) ➔ Yunusobod-14 (4.1 km)</div>
+              <div style="color: var(--cyan-light); font-weight: 700;">Tejalgan vaqt: ~22 daqiqa</div>
+            </div>
+          </div>
+
+          <!-- Fleet Cards -->
+          <div class="fleet-cards-wrap">
+            <div class="card-title-sm" style="margin-bottom: 2px;">
+              <span>🚛</span> Brigadalar Avtoparki
+            </div>
+
+            <div class="fleet-card" id="truckCard1">
+              <div class="fleet-left">
+                <div class="fleet-avatar">🚛</div>
+                <div class="fleet-info">
+                  <h4>Hero Truck #01 (Elektro)</h4>
+                  <p>A. Karimov | Sig'im: 85%</p>
+                </div>
+              </div>
+              <span class="status-pill mission">Yo'lda</span>
+            </div>
+
+            <div class="fleet-card" id="truckCard2">
+              <div class="fleet-left">
+                <div class="fleet-avatar">🚛</div>
+                <div class="fleet-info">
+                  <h4>Hero Truck #02 (Gibrid)</h4>
+                  <p>O. Yo'ldoshev | Sig'im: 10%</p>
+                </div>
+              </div>
+              <span class="status-pill ready">Tayyor</span>
+            </div>
+
+            <div class="fleet-card" id="truckCard3">
+              <div class="fleet-left">
+                <div class="fleet-avatar">🚛</div>
+                <div class="fleet-info">
+                  <h4>Hero Truck #03 (Kompaktor)</h4>
+                  <p>D. Rahimov | Sig'im: 0%</p>
+                </div>
+              </div>
+              <span class="status-pill ready">Tayyor</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Logistics Chat & Reports -->
+        <div class="two-col-grid" style="margin-bottom: 30px;">
+          
+          <!-- Logistics AI Chat -->
+          <div class="chat-card" style="height: 440px;">
+            <div class="chat-header">
+              <div class="chat-user-info">
+                <div class="ai-avatar" style="background: var(--cyan);">
+                  <span style="font-size: 18px;">⚡</span>
+                </div>
+                <div class="chat-user-text">
+                  <h4>COH Logistics Dispatcher AI</h4>
+                  <p style="color: var(--cyan-light);">Operatsion dispetcher</p>
+                </div>
+              </div>
+              <span class="status-pill ready">Qat'iy rejim</span>
+            </div>
+
+            <div class="chat-body" id="logisticsChatBody">
+              <div class="chat-bubble-wrap ai">
+                <div class="bubble">
+                  Dispetcher AI faollashdi. Tizim qoidasi: 50 tadan oshgan hududlar zudlik bilan "Qizil status"ga o'tkaziladi va birinchi navbatda marshrutga kiritiladi. Buyruqni kiriting.
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-quick-prompts">
+              <button class="quick-chip" data-logistics="Qizil statusdagi hududlar ro'yxati">🚨 Qizil hududlar</button>
+              <button class="quick-chip" data-logistics="Eng optimal marshrutni hisobla">🗺️ Optimal yo'l</button>
+              <button class="quick-chip" data-logistics="Safar hisobotini shakllantir">📋 Safar hisoboti</button>
+            </div>
+
+            <div class="chat-footer">
+              <form class="chat-form" id="logisticsChatForm">
+                <input type="text" id="logisticsChatInput" class="chat-input" placeholder="Buyruq kiriting..." autocomplete="off">
+                <button type="submit" class="btn-send" style="background: var(--cyan);">➤</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Reports Table -->
+          <div class="reports-card" style="height: 440px; overflow-y: auto;">
+            <div class="reports-header">
+              <div class="card-title-sm">
+                <span>📋</span> Safarlar Hisoboti
+              </div>
+              <button class="btn-secondary" id="exportReportBtn" style="padding: 6px 12px; font-size: 12px;">
+                📥 CSV
+              </button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="custom-table" id="reportsTable">
+                <thead>
+                  <tr>
+                    <th>Sana</th>
+                    <th>Hudud</th>
+                    <th>Chiqindi</th>
+                    <th>Vaqt</th>
+                    <th>Xonadon</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="reportsTableBody">
+                  <tr>
+                    <td>27.08.2026</td>
+                    <td><strong>Chilonzor-9</strong></td>
+                    <td>640 kg</td>
+                    <td>35 daq</td>
+                    <td>52 ta</td>
+                    <td><span class="status-pill ready">Yakunlandi</span></td>
+                  </tr>
+                  <tr>
+                    <td>26.08.2026</td>
+                    <td><strong>Yunusobod-14</strong></td>
+                    <td>580 kg</td>
+                    <td>40 daq</td>
+                    <td>50 ta</td>
+                    <td><span class="status-pill ready">Yakunlandi</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- Share Modal -->
+  <div class="modal-backdrop" id="shareModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeShareModalBtn">✕</button>
+      <h3><span>📢</span> Qo'shnilarni Eko-Safga Chorlang!</h3>
+      <p>50 kishilik marraga tezroq erishish va Qahramonlarimizni chaqirish uchun havolani mahalla guruhiga ulashing.</p>
+      
+      <div class="share-link-input-wrap">
+        <input type="text" class="share-input" id="shareLinkInput" value="https://callourhero.eco/join/navroz-mfy" readonly>
+        <button class="btn-primary" id="copyShareLinkBtn" style="padding: 9px 16px;">Nusxalash</button>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <a href="https://t.me/share/url?url=https://callourhero.eco/join&text=Qo%27shnilar%2C%20Call%20Our%20Hero%20orqali%20mahallamizda%2050%20kishi%20yig%27ib%2C%20chiqindilarni%20saralab%20topshiramiz!" target="_blank" class="btn-social tg">
+          <span>✈️</span> Telegramda Ulashish
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Report Modal -->
+  <div class="modal-backdrop" id="newReportModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeNewReportModalBtn">✕</button>
+      <h3><span>📝</span> Yangi Safar Hisoboti Qo'shish</h3>
+      <p>Bajarilgan missiya natijalarini kiriting.</p>
+      
+      <form id="newReportForm" style="display: flex; flex-direction: column; gap: 12px;">
+        <div>
+          <label style="font-size: 12px; color: var(--text-muted);">Hudud nomi:</label>
+          <input type="text" id="reportAreaInput" class="form-control" placeholder="Masalan: Chilonzor-9" required style="width: 100%; margin-top: 4px;">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted);">Chiqindi (kg):</label>
+            <input type="number" id="reportKgInput" class="form-control" placeholder="Masalan: 550" required style="width: 100%; margin-top: 4px;">
+          </div>
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted);">Vaqt (daq):</label>
+            <input type="number" id="reportTimeInput" class="form-control" placeholder="Masalan: 35" required style="width: 100%; margin-top: 4px;">
+          </div>
+        </div>
+        <div>
+          <label style="font-size: 12px; color: var(--text-muted);">Qamrab olingan xonadonlar:</label>
+          <input type="number" id="reportHouseholdsInput" class="form-control" placeholder="Masalan: 50" required style="width: 100%; margin-top: 4px;">
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top: 6px; justify-content: center;">
+          <span>✅</span> Saqlash
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas & Toasts -->
+  <canvas id="confetti-canvas"></canvas>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript Engine -->
+  <script src="java.js"></script>
+</body>
+</html>
