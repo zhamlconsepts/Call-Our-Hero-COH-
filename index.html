@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Call Our Hero (COH) — Aqlli Eko-Logistika & Mahalla Hamjamiyati</title>
-  <meta name="description" content="Call Our Hero (COH) — 50 kishilik jamoaviy birlik orqali chiqindilarni saralash va tezkor ekologik qahramonlarni chaqirish platformasi.">
+  <title>Call Our Hero (COH) — Smart Eco-Logistics & Community Network</title>
+  <meta name="description" content="Call Our Hero (COH) — 50 kishilik jamoaviy birlik orqali chiqindilarni saralash va tezkor ekologik logistika boshqaruv tizimi.">
   <link rel="stylesheet" href="main.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦸‍♂️</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22white%22 stroke-width=%222%22><path d=%22M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z%22/></svg>">
 </head>
 <body>
 
-  <!-- ================= 1. ENTERPRISE AUTH / LOGIN GATEWAY ================= -->
+  <!-- ================= 1. MINIMALIST AUTH & LOGIN GATEWAY ================= -->
   <section class="login-screen" id="loginScreen">
     <div class="login-gateway-box">
       
@@ -18,26 +18,29 @@
       <div class="login-header">
         <div class="login-brand-badge">
           <span class="live-dot"></span>
-          <span>🦸‍♂️ Call Our Hero • Smart Eko-Tizim v2.4</span>
+          <span>Call Our Hero • System Core v2.4</span>
         </div>
         <h1 class="login-title">
-          Toza Mahalla Uchun <span>Birlashamiz!</span>
+          Toza Mahalla Uchun <span>Birlashamiz</span>
         </h1>
         <p class="login-sub">
-          O'zbekistondagi ilk 50 kishilik jamoaviy eko-birlik va aqlli chiqindi logistikasi boshqaruv markaziga xush kelibsiz.
+          Jamoaviy 50 kishilik eko-birlik va intellektual logistika boshqaruv platformasi.
         </p>
       </div>
 
       <!-- Auth Switcher Tabs -->
       <div class="auth-tabs-bar">
         <button type="button" class="auth-tab-btn active" id="tabCitizenBtn">
-          <span>🏡</span> Aholi Portali
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Aholi Portali</span>
         </button>
         <button type="button" class="auth-tab-btn" id="tabWorkerBtn">
-          <span>⚡</span> Dispetcher & Xodimlar
+          <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Dispetcher & Xodimlar</span>
         </button>
         <button type="button" class="auth-tab-btn" id="tabOneIdBtn">
-          <span>🏛️</span> OneID / E-Gov
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>OneID / E-Gov</span>
         </button>
       </div>
 
@@ -47,38 +50,44 @@
         <!-- Role 1: Citizen / Aholi -->
         <div class="role-card citizen" id="citizenAuthCard">
           <div class="role-card-header">
-            <div class="role-icon-box">🏡</div>
+            <div class="role-icon-box">
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
             <div class="role-title-text">
               <h3>Aholi & Xonadon Portali</h3>
               <span>Mahalla Eko-Hamjamiyati</span>
             </div>
           </div>
           <p class="role-desc">
-            Mahalladoshlar bilan <strong>50 kishilik</strong> chiqindi topshirish marrasiga erishing, chiqindilarni saralang va Qahramonlarimizni chaqiring.
+            Mahalladoshlar bilan <strong>50 kishilik</strong> talab marrasiga erishing, chiqindilarni saralang va maxsus xizmatni chaqiring.
           </p>
           
           <form class="role-form" id="citizenLoginForm">
             <div class="form-group">
               <label for="citizenNameInput">F.I.SH / Xonadon egasi:</label>
               <div class="input-with-icon">
-                <span class="input-icon-prefix">👤</span>
+                <span class="input-icon-prefix">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
                 <input type="text" id="citizenNameInput" class="form-control" placeholder="Masalan: Sardor Aliyev" value="Sardor Aliyev" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="citizenPhoneInput">
-                <span>Telefon raqamingiz:</span>
+                <span>Telefon raqami:</span>
                 <span class="hint-link" id="requestOtpLink">SMS-kod orqali</span>
               </label>
               <div class="input-with-icon">
-                <span class="input-icon-prefix">📱</span>
+                <span class="input-icon-prefix">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
                 <input type="tel" id="citizenPhoneInput" class="form-control" placeholder="+998 (90) 123-45-67" value="+998 (90) 777-10-20" required>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="citizenMahallaSelect">Mahallangizni tanlang:</label>
+              <label for="citizenMahallaSelect">Mahallani tanlang:</label>
               <select id="citizenMahallaSelect" class="form-control">
                 <option value="navroz">"Navro'z" MFY (Toshkent)</option>
                 <option value="chilonzor9">"Chilonzor-9" MFY</option>
@@ -93,11 +102,12 @@
                 <input type="checkbox" id="citizenRememberMe" checked>
                 <span>Meni eslab qol</span>
               </label>
-              <span class="hint-link" id="citizenQuickFill">Tezkor to'ldirish</span>
+              <span class="hint-link" id="citizenQuickFill">Namuna to'ldirish</span>
             </div>
 
             <button type="submit" class="btn-role-enter green" id="citizenSubmitBtn">
-              <span>🌱</span> Aholi Sifatida Tizimga Kirish
+              <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <span>Aholi Sifatida Kirish</span>
             </button>
           </form>
         </div>
@@ -105,38 +115,44 @@
         <!-- Role 2: Logistics / Workers -->
         <div class="role-card worker" id="workerAuthCard">
           <div class="role-card-header">
-            <div class="role-icon-box">⚡</div>
+            <div class="role-icon-box">
+              <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
             <div class="role-title-text">
               <h3>Dispetcher & Xodimlar</h3>
-              <span>COH Operatsion Boshqaruv</span>
+              <span>COH Operatsion Markaz</span>
             </div>
           </div>
           <p class="role-desc">
-            <strong>50+ to'plangan Qizil Statusdagi</strong> hududlarni nazorat qiling, maxsus elektro avtoparkni yo'naltiring va AI marshrut tahlilidan foydalaning.
+            <strong>50+ to'plangan Qizil Statusdagi</strong> hududlarni nazorat qiling, avtoparkni yo'naltiring va AI marshrut tahlilidan foydalaning.
           </p>
 
           <form class="role-form" id="workerLoginForm">
             <div class="form-group">
               <label for="workerIdInput">Dispetcher / Operator ID:</label>
               <div class="input-with-icon">
-                <span class="input-icon-prefix">🛡️</span>
+                <span class="input-icon-prefix">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </span>
                 <input type="text" id="workerIdInput" class="form-control" placeholder="Masalan: HERO-DISPATCH-01" value="HERO-DISPATCH-01" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="workerPassInput">
-                <span>Xizmat Kaliti / Parol:</span>
+                <span>Xizmat Paroli:</span>
                 <span class="hint-link" id="togglePassVisibility">Ko'rsatish</span>
               </label>
               <div class="input-with-icon">
-                <span class="input-icon-prefix">🔒</span>
+                <span class="input-icon-prefix">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </span>
                 <input type="password" id="workerPassInput" class="form-control" value="hero•dispatch•2026" required>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="workerRoleSelect">Lavozim / Vazifa:</label>
+              <label for="workerRoleSelect">Lavozim:</label>
               <select id="workerRoleSelect" class="form-control">
                 <option value="dispatcher">Operatsion Dispetcher AI</option>
                 <option value="driver">Hero Truck Haydovchisi</option>
@@ -147,13 +163,14 @@
             <div class="form-options-row">
               <label class="custom-checkbox-wrap">
                 <input type="checkbox" id="workerRememberMe" checked>
-                <span>Xavfsiz sessiyani saqlash</span>
+                <span>Xavfsiz sessiya</span>
               </label>
               <span class="hint-link" id="workerQuickFill">Demo kirish</span>
             </div>
 
             <button type="submit" class="btn-role-enter cyan" id="workerSubmitBtn">
-              <span>⚡</span> Dispetcher Hub-ga Kirish
+              <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Dispetcher Markaziga Kirish</span>
             </button>
           </form>
         </div>
@@ -163,48 +180,52 @@
       <!-- Trust & Security Badges -->
       <div class="security-trust-bar">
         <div class="trust-item">
-          <span class="icon">🔒</span>
-          <span>256-Bit SSL Shifrlangan Aloqa</span>
+          <svg class="icon-svg" style="width:14px; height:14px;" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>256-Bit SSL Encrypted Protocol</span>
         </div>
         <div class="trust-item">
-          <span class="icon">🏛️</span>
-          <span>E-Mahalla & Ekologiya Vazirligi Bilan Integratsiya</span>
+          <svg class="icon-svg" style="width:14px; height:14px;" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>E-Mahalla & Smart City Verified</span>
         </div>
         <div class="trust-item">
-          <span class="quick-demo-pill" id="quickDemoCitizenBtn">⚡ Demo Aholi</span>
-          <span class="quick-demo-pill" id="quickDemoDispatchBtn">⚡ Demo Dispetcher</span>
+          <span class="quick-demo-pill" id="quickDemoCitizenBtn">Demo Aholi</span>
+          <span class="quick-demo-pill" id="quickDemoDispatchBtn">Demo Dispetcher</span>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= 2. MAIN APPLICATION (AFTER LOGIN) ================= -->
+  <!-- ================= 2. MAIN APPLICATION (POST LOGIN) ================= -->
   <div class="main-app-wrap" id="mainAppWrap">
     
-    <!-- Top Sticky Navbar -->
+    <!-- Top Minimalist Navbar -->
     <header class="navbar">
       <div class="container">
         <div class="nav-inner">
           
           <!-- Logo & Brand -->
           <div class="logo-brand" id="brandLogoBtn">
-            <div class="logo-icon">🦸‍♂️</div>
+            <div class="logo-icon">
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
             <div class="logo-text-wrap">
               <div class="logo-title">
                 Call Our Hero <span class="logo-badge">COH</span>
               </div>
-              <div class="logo-sub">Toza Mahalla, Qahramonlar Bilan</div>
+              <div class="logo-sub">Smart Eco-Logistics Platform</div>
             </div>
           </div>
 
-          <!-- Mode Switcher (Citizen / Logistics) -->
+          <!-- Mode Switcher (Pill Style) -->
           <div class="mode-switcher" id="portalSwitcher">
             <button class="mode-btn active" id="citizenPortalBtn" data-target="citizen-view">
-              <span>🌱</span> Aholi Portali
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Aholi Portali</span>
             </button>
             <button class="mode-btn logistics" id="logisticsPortalBtn" data-target="logistics-view">
-              <span>⚡</span> Dispetcher & Tizim
+              <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Dispetcher & Tizim</span>
             </button>
           </div>
 
@@ -214,11 +235,12 @@
               <span class="dot"></span>
               <span id="navUserName">Sardor Aliyev (Navro'z)</span>
             </div>
-            <button class="icon-btn" id="soundToggleBtn" title="Ovoz (Yoqish/O'chirish)">
-              <span id="soundIcon">🔊</span>
+            <button class="icon-btn" id="soundToggleBtn" title="Ovoz">
+              <svg class="icon-svg" id="soundIconSvg" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
             </button>
-            <button class="btn-logout" id="logoutBtn" title="Chiqish / Rolni o'zgartirish">
-              <span>🚪</span> Chiqish
+            <button class="btn-logout" id="logoutBtn" title="Chiqish">
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+              <span>Chiqish</span>
             </button>
           </div>
 
@@ -235,45 +257,54 @@
           <div class="hero-banner-card">
             <div class="hero-content">
               <div class="hero-tag">
-                <span>🌟</span> Jamoaviy Tozalik Harakati
+                <svg class="icon-svg" style="width:13px; height:13px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>50 Kishilik Jamoaviy Tashabbus</span>
               </div>
               <h1 class="hero-title">
                 Chiqindini Saralang, <br>
-                <span class="highlight">Qahramonimizni Chaqiring!</span>
+                <span class="highlight">Qahramonlarni Chaqiring.</span>
               </h1>
               <p class="hero-desc">
-                Mahallangizda <strong>50 kishining saralangan chiqindisi</strong> yig'ilsagina maxsus eko-xizmat mashinasi zudlik bilan yetib keladi. Qo'shnilar bilan birdam bo'ling va toza mahallaga birga erishing!
+                Mahallangizda <strong>50 ta xonadonning saralangan chiqindisi</strong> yig'ilganda maxsus eko-transport zudlik bilan yo'lga chiqadi. Qo'shnilar bilan hamkorlik qiling.
               </p>
               <div class="hero-cta-group">
                 <button class="btn-primary" id="scrollTrackerBtn">
-                  <span>🚀</span> 50 Kishilik Safga Qo'shilish
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+                  <span>50 Kishilik Safga Qo'shilish</span>
                 </button>
                 <button class="btn-secondary" id="openShareModalBtn">
-                  <span>📢</span> Qo'shnilarni Taklif Qilish
+                  <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span>Qo'shnilarni Taklif Qilish</span>
                 </button>
               </div>
             </div>
 
             <div class="hero-stats-side">
               <div class="stat-glass-box">
-                <div class="stat-icon-wrap green">🚛</div>
+                <div class="stat-icon-wrap">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><rect width="16" height="13" x="1" y="3" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
                 <div class="stat-info">
                   <div class="stat-num" id="totalTripsCount">148+</div>
                   <div class="stat-lbl">Muvaffaqiyatli Safarlar</div>
                 </div>
               </div>
               <div class="stat-glass-box">
-                <div class="stat-icon-wrap cyan">♻️</div>
+                <div class="stat-icon-wrap">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.2a1.8 1.8 0 0 0 1.57-.88 1.78 1.78 0 0 0 .004-1.78L16.8 9.5"/><path d="m14 2-3 5h6z"/></svg>
+                </div>
                 <div class="stat-info">
                   <div class="stat-num" id="totalWasteRecycled">12.4 Tonna</div>
                   <div class="stat-lbl">Saralangan Chiqindi</div>
                 </div>
               </div>
               <div class="stat-glass-box">
-                <div class="stat-icon-wrap amber">🏡</div>
+                <div class="stat-icon-wrap">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                </div>
                 <div class="stat-info">
                   <div class="stat-num" id="activeMahallasCount">18 Mahalla</div>
-                  <div class="stat-lbl">Faol Eko-Hamjamiyatlar</div>
+                  <div class="stat-lbl">Faol Hamjamiyatlar</div>
                 </div>
               </div>
             </div>
@@ -287,7 +318,10 @@
           <div class="tracker-card">
             <div class="tracker-header">
               <div class="tracker-header-left">
-                <h2><span>🎯</span> 50 Kishilik "Call Our Hero" Marraga Intilish</h2>
+                <h2>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M22 12h-4"/><path d="M6 12H2"/><path d="M12 6V2"/><path d="M12 22v-4"/></svg>
+                  <span>50 Kishilik "Call Our Hero" Marraga Intilish</span>
+                </h2>
                 <p>Har bir hududda 50 ta ariza yig'ilishi bilan tozalik xizmati zudlik bilan yo'lga chiqadi.</p>
               </div>
               <div class="mahalla-select-wrap">
@@ -320,13 +354,13 @@
                   <span>0 (Boshlanish)</span>
                   <span>25 (Yarim yo'l)</span>
                   <span>40 (Oz qoldi)</span>
-                  <span style="color: var(--emerald-light); font-weight: 700;">50 (Call Our Hero!)</span>
+                  <span style="color: #fff; font-weight: 700;">50 (Call Our Hero!)</span>
                 </div>
 
                 <div class="tracker-notice-box">
-                  <span style="font-size: 20px;">💡</span>
+                  <svg class="icon-svg" style="color: var(--text-muted);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                   <div id="trackerRemainingText">
-                    Sizning mahallangizda hozircha <strong>38/50 kishi</strong> to'plandi. Qahramonlar kelishi uchun yana <strong>12 kishi</strong> qoldi!
+                    Sizning mahallangizda hozircha <strong>38/50 kishi</strong> to'plandi. Qahramonlar kelishi uchun yana <strong>12 kishi</strong> qoldi.
                   </div>
                 </div>
               </div>
@@ -334,13 +368,15 @@
               <!-- Hero Action Box -->
               <div class="hero-action-box">
                 <div class="hero-action-status-pill waiting" id="heroStatusPill">
-                  ⏳ 12 Ariza Qoldi
+                  12 Ariza Qoldi
                 </div>
                 <button class="btn-call-hero-mega" id="callHeroActionBtn">
-                  <span>🦸‍♂️</span> CALL OUR HERO!
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>CALL OUR HERO</span>
                 </button>
                 <button class="btn-join-request" id="joinRequestBtn">
-                  <span>➕</span> Mening Arizamni Qo'shish (+1)
+                  <svg class="icon-svg" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <span>Mening Arizamni Qo'shish (+1)</span>
                 </button>
               </div>
             </div>
@@ -352,14 +388,16 @@
       <section class="section-sorting">
         <div class="container">
           <div class="section-header">
-            <span class="section-tag">♻️ SARALASH AKADEMIYASI</span>
+            <span class="section-tag">SARALASH STANDARTLARI</span>
             <h2>Chiqindilarni Qanday Saralash Kerak?</h2>
             <p>Tozalik xodimlariga yordam bering: chiqindilarni to'g'ri saralab topshirish tabiatni asrashning 1-qadamidir.</p>
           </div>
 
           <div class="sorting-grid">
             <div class="sort-card plastic" data-category="plastic">
-              <div class="sort-icon-box">🔵</div>
+              <div class="sort-icon-box">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.2a1.8 1.8 0 0 0 1.57-.88 1.78 1.78 0 0 0 .004-1.78L16.8 9.5"/><path d="m14 2-3 5h6z"/></svg>
+              </div>
               <h3>Plastik Idishlar</h3>
               <p>Butilkalar, flakonlar, qadoqlar va kanistralar.</p>
               <ul class="sort-rules-list">
@@ -370,7 +408,9 @@
             </div>
 
             <div class="sort-card paper" data-category="paper">
-              <div class="sort-icon-box">📦</div>
+              <div class="sort-icon-box">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
               <h3>Qog'oz & Karton</h3>
               <p>Qutilar, kitob-jurnallar, toza qog'ozlar va paketlar.</p>
               <ul class="sort-rules-list">
@@ -381,7 +421,9 @@
             </div>
 
             <div class="sort-card organic" data-category="organic">
-              <div class="sort-icon-box">🍏</div>
+              <div class="sort-icon-box">
+                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
               <h3>Organik Chiqindi</h3>
               <p>Meva-sabzavot po'stloqlari, barglar, oziq-ovqat qoldiqlari.</p>
               <ul class="sort-rules-list">
@@ -392,7 +434,9 @@
             </div>
 
             <div class="sort-card ewaste" data-category="ewaste">
-              <div class="sort-icon-box">🔋</div>
+              <div class="sort-icon-box">
+                <svg class="icon-svg" viewBox="0 0 24 24"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/></svg>
+              </div>
               <h3>Maxsus & Batareyalar</h3>
               <p>Batareykalar, akkumulyator, lampochkalar va simlar.</p>
               <ul class="sort-rules-list">
@@ -406,13 +450,17 @@
           <!-- AI Classifier Search -->
           <div class="ai-classifier-box">
             <div class="classifier-text">
-              <h4><span>🤖</span> AI Chiqindi Saralovchi Yordamchi</h4>
-              <p>Qaysi chiqindini qayerga tashlashni bilmayapsizmi? Nomini yozing, AI darhol toifasini aniqlaydi.</p>
+              <h4>
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                <span>AI Chiqindi Saralovchi Yordamchi</span>
+              </h4>
+              <p>Qaysi chiqindini qayerga tashlashni bilmayapsizmi? Nomini yozing, AI toifasini aniqlab beradi.</p>
             </div>
             <form class="classifier-form" id="aiClassifierForm">
               <input type="text" id="wasteSearchInput" class="classifier-input" placeholder="Masalan: Baklashka, banan po'sti, batareyka..." required>
-              <button type="submit" class="btn-primary" style="padding: 11px 20px;">
-                <span>🔍</span> Aniqlash
+              <button type="submit" class="btn-primary" style="padding: 10px 18px;">
+                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <span>Aniqlash</span>
               </button>
             </form>
             <div class="classifier-result-modal" id="classifierResultBox"></div>
@@ -430,35 +478,39 @@
               <div class="chat-header">
                 <div class="chat-user-info">
                   <div class="ai-avatar">
-                    <img src="assets/mascot_avatar.jpg" alt="COH Hero Mascot" onerror="this.innerHTML='🦸‍♂️'">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                   </div>
                   <div class="chat-user-text">
-                    <h4>Call Our Hero AI <span style="font-size: 11px; color:var(--emerald-light);">● Onlayn</span></h4>
-                    <p>Aholi uchun g'amxo'r aqlli yordamchi</p>
+                    <h4>Call Our Hero AI <span style="font-size: 11px; color: var(--text-muted);">● Onlayn</span></h4>
+                    <p>Aholi uchun aqlli yordamchi</p>
                   </div>
                 </div>
-                <button class="icon-btn" id="clearChatBtn" title="Chatni tozalash">🔄</button>
+                <button class="icon-btn" id="clearChatBtn" title="Chatni tozalash">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                </button>
               </div>
 
               <div class="chat-body" id="citizenChatBody">
                 <div class="chat-bubble-wrap ai">
                   <div class="bubble">
-                    Assalomu alaykum! 🌱 Men <strong>"Call Our Hero"</strong> ilovasining aqlli yordamchisiman. Mahallangizdagi holat, chiqindilarni saralash yoki qahramonlarimizni chaqirish bo'yicha savollaringizga mamnuniyat bilan javob beraman!
+                    Assalomu alaykum. Men <strong>Call Our Hero</strong> platformasining aqlli yordamchisiman. Mahallangizdagi holat, chiqindilarni saralash yoki xizmatni chaqirish bo'yicha savollaringizga javob beraman.
                   </div>
                 </div>
               </div>
 
               <div class="chat-quick-prompts">
-                <button class="quick-chip" data-query="Bizning mahallada nechta odam yig'ildi?">📊 Mahalladagi holat</button>
-                <button class="quick-chip" data-query="Plastik idishlarni qanday tayyorlash kerak?">🔵 Plastik saralash</button>
-                <button class="quick-chip" data-query="Qahramonlar qachon yetib keladi?">🚛 Qachon keladi?</button>
-                <button class="quick-chip" data-query="Qo'shnilarimni qanday chorlasam bo'ladi?">🤝 Qo'shnilar birligi</button>
+                <button class="quick-chip" data-query="Bizning mahallada nechta odam yig'ildi?">Mahalladagi holat</button>
+                <button class="quick-chip" data-query="Plastik idishlarni qanday tayyorlash kerak?">Plastik saralash</button>
+                <button class="quick-chip" data-query="Qahramonlar qachon yetib keladi?">Qachon keladi?</button>
+                <button class="quick-chip" data-query="Qo'shnilarimni qanday chorlasam bo'ladi?">Qo'shnilar birligi</button>
               </div>
 
               <div class="chat-footer">
                 <form class="chat-form" id="citizenChatForm">
                   <input type="text" id="citizenChatInput" class="chat-input" placeholder="Xabaringizni yozing..." autocomplete="off">
-                  <button type="submit" class="btn-send">➤</button>
+                  <button type="submit" class="btn-send">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  </button>
                 </form>
               </div>
             </div>
@@ -466,7 +518,8 @@
             <!-- Mahalla Leaderboard -->
             <div class="leaderboard-card">
               <div class="card-title-sm">
-                <span>🏆</span> Eng Faol Eko-Mahallalar
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-2.34"/><path d="M18 14.66V17c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v7a6 6 0 0 1-12 0V4z"/></svg>
+                <span>Faol Eko-Mahallalar</span>
               </div>
               <div class="leaderboard-list">
                 <div class="leaderboard-item">
@@ -485,7 +538,7 @@
                     <span class="rank-badge silver">2</span>
                     <div>
                       <div class="leader-name">"Chilonzor-9" MFY</div>
-                      <div class="leader-sub">52 / 50 kishi (100%+) 🚨</div>
+                      <div class="leader-sub">52 / 50 kishi (100%+)</div>
                     </div>
                   </div>
                   <div class="leader-score">4,120 pt</div>
@@ -505,24 +558,33 @@
 
               <!-- Badges -->
               <div style="border-top: 1px solid var(--border-subtle); padding-top: 14px;">
-                <div class="card-title-sm" style="font-size: 14px;">
-                  <span>🎖️</span> Sizning Eko-Nishonlaringiz
+                <div class="card-title-sm" style="font-size: 13.5px;">
+                  <svg class="icon-svg" style="width:14px; height:14px;" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                  <span>Sizning Eko-Nishonlaringiz</span>
                 </div>
                 <div class="badges-grid">
                   <div class="badge-item">
-                    <div class="badge-icon">🌱</div>
+                    <div class="badge-icon">
+                      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
                     <div class="badge-title">Ilk Qadam</div>
                   </div>
                   <div class="badge-item">
-                    <div class="badge-icon">🦸‍♂️</div>
+                    <div class="badge-icon">
+                      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
                     <div class="badge-title">Qahramon</div>
                   </div>
                   <div class="badge-item">
-                    <div class="badge-icon">💎</div>
+                    <div class="badge-icon">
+                      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/></svg>
+                    </div>
                     <div class="badge-title">Plastik</div>
                   </div>
                   <div class="badge-item">
-                    <div class="badge-icon">🤝</div>
+                    <div class="badge-icon">
+                      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                     <div class="badge-title">Birdamlik</div>
                   </div>
                 </div>
@@ -543,28 +605,33 @@
         <div class="logistics-header-bar">
           <div class="logistics-title-wrap">
             <h1>
-              <span>⚡</span> Call Our Hero Logistics Hub
+              <svg class="icon-svg" style="width:24px; height:24px;" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Call Our Hero Logistics Hub</span>
             </h1>
-            <p style="color: var(--text-muted); font-size: 13.5px; margin-top: 2px;">
-              50+ to'plangan "Qizil Status"dagi hududlarni zudlik bilan boshqarish markazi.
+            <p style="color: var(--text-muted); font-size: 13px; margin-top: 2px;">
+              50+ to'plangan "Qizil Status"dagi hududlarni boshqarish markazi.
             </p>
           </div>
-          <button class="btn-primary" id="openNewReportModalBtn" style="padding: 10px 18px;">
-            <span>📝</span> Yangi Safar Hisoboti
+          <button class="btn-primary" id="openNewReportModalBtn" style="padding: 9px 16px;">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            <span>Yangi Safar Hisoboti</span>
           </button>
         </div>
 
         <!-- Red Status Alert Box -->
         <div class="red-status-banner" id="redStatusBanner">
           <div class="red-status-left">
-            <div class="red-status-icon">🚨</div>
+            <div class="red-status-icon">
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
             <div class="red-status-info">
-              <h3 id="redStatusAlertTitle">QIZIL STATUS: "Chilonzor-9" da 52 nafar aholi to'plandi!</h3>
-              <p id="redStatusAlertDesc">Chiqindilarni olib chiqish uchun zudlik bilan Qahramonlar brigadasini yo'lga chiqaring.</p>
+              <h3 id="redStatusAlertTitle">QIZIL STATUS: "Chilonzor-9" da 52 nafar aholi to'plandi</h3>
+              <p id="redStatusAlertDesc">Chiqindilarni olib chiqish uchun zudlik bilan brigadani yo'naltiring.</p>
             </div>
           </div>
           <button class="btn-dispatch-now" id="instantDispatchBtn">
-            <span>🚛</span> Brigadani Yo'naltirish
+            <svg class="icon-svg" viewBox="0 0 24 24"><rect width="16" height="13" x="1" y="3" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>Brigadani Yo'naltirish</span>
           </button>
         </div>
 
@@ -575,11 +642,12 @@
           <div class="radar-map-card">
             <div class="radar-header">
               <div class="card-title-sm">
-                <span>📍</span> Hududlar Radari & Marshrut Tahlili
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Hududlar Radari & Marshrut Tahlili</span>
               </div>
               <div style="font-size: 11.5px; color: var(--text-dim);">
-                <span style="color: var(--crimson-light); font-weight:700;">● 50+ Qizil</span> | 
-                <span style="color: var(--amber-light); font-weight:700;">● 35+ Sariq</span>
+                <span style="color: #fff; font-weight:600;">● 50+ Qizil</span> | 
+                <span style="color: var(--text-muted); font-weight:600;">● 35+ Sariq</span>
               </div>
             </div>
 
@@ -588,41 +656,52 @@
               <div class="radar-rings"></div>
 
               <div class="map-node red" style="top: 30%; left: 35%;" data-name="Chilonzor-9">
-                <div class="node-pin">🚨</div>
+                <div class="node-pin">
+                  <svg class="icon-svg" style="width:12px; height:12px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                </div>
                 <div class="node-label">Chilonzor-9 (52)</div>
               </div>
 
               <div class="map-node yellow" style="top: 65%; left: 65%;" data-name="Yunusobod-14">
-                <div class="node-pin">⏳</div>
+                <div class="node-pin">
+                  <svg class="icon-svg" style="width:12px; height:12px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                </div>
                 <div class="node-label">Yunusobod-14 (47)</div>
               </div>
 
               <div class="map-node green" style="top: 40%; left: 75%;" data-name="Navro'z">
-                <div class="node-pin">🏡</div>
+                <div class="node-pin">
+                  <svg class="icon-svg" style="width:12px; height:12px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                </div>
                 <div class="node-label">Navro'z (38)</div>
               </div>
 
               <div class="map-node green" style="top: 75%; left: 25%;" data-name="Mirobod-4">
-                <div class="node-pin">🏡</div>
+                <div class="node-pin">
+                  <svg class="icon-svg" style="width:12px; height:12px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                </div>
                 <div class="node-label">Mirobod-4 (29)</div>
               </div>
             </div>
 
-            <div style="margin-top: 12px; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
-              <div>🤖 <strong>Optimal yo'l:</strong> Baza ➔ Chilonzor-9 (3.4 km) ➔ Yunusobod-14 (4.1 km)</div>
-              <div style="color: var(--cyan-light); font-weight: 700;">Tejalgan vaqt: ~22 daqiqa</div>
+            <div style="margin-top: 12px; display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+              <div><strong>Optimal yo'l:</strong> Baza ➔ Chilonzor-9 (3.4 km) ➔ Yunusobod-14 (4.1 km)</div>
+              <div style="color: #fff; font-weight: 600;">Tejalgan vaqt: ~22 daqiqa</div>
             </div>
           </div>
 
           <!-- Fleet Cards -->
           <div class="fleet-cards-wrap">
             <div class="card-title-sm" style="margin-bottom: 2px;">
-              <span>🚛</span> Brigadalar Avtoparki
+              <svg class="icon-svg" viewBox="0 0 24 24"><rect width="16" height="13" x="1" y="3" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span>Brigadalar Avtoparki</span>
             </div>
 
             <div class="fleet-card" id="truckCard1">
               <div class="fleet-left">
-                <div class="fleet-avatar">🚛</div>
+                <div class="fleet-avatar">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><rect width="16" height="13" x="1" y="3" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
                 <div class="fleet-info">
                   <h4>Hero Truck #01 (Elektro)</h4>
                   <p>A. Karimov | Sig'im: 85%</p>
@@ -633,7 +712,9 @@
 
             <div class="fleet-card" id="truckCard2">
               <div class="fleet-left">
-                <div class="fleet-avatar">🚛</div>
+                <div class="fleet-avatar">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><rect width="16" height="13" x="1" y="3" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
                 <div class="fleet-info">
                   <h4>Hero Truck #02 (Gibrid)</h4>
                   <p>O. Yo'ldoshev | Sig'im: 10%</p>
@@ -644,7 +725,9 @@
 
             <div class="fleet-card" id="truckCard3">
               <div class="fleet-left">
-                <div class="fleet-avatar">🚛</div>
+                <div class="fleet-avatar">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><rect width="16" height="13" x="1" y="3" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
                 <div class="fleet-info">
                   <h4>Hero Truck #03 (Kompaktor)</h4>
                   <p>D. Rahimov | Sig'im: 0%</p>
@@ -663,12 +746,12 @@
           <div class="chat-card" style="height: 440px;">
             <div class="chat-header">
               <div class="chat-user-info">
-                <div class="ai-avatar" style="background: var(--cyan);">
-                  <span style="font-size: 18px;">⚡</span>
+                <div class="ai-avatar">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <div class="chat-user-text">
                   <h4>COH Logistics Dispatcher AI</h4>
-                  <p style="color: var(--cyan-light);">Operatsion dispetcher</p>
+                  <p style="color: var(--text-muted);">Operatsion dispetcher</p>
                 </div>
               </div>
               <span class="status-pill ready">Qat'iy rejim</span>
@@ -683,15 +766,17 @@
             </div>
 
             <div class="chat-quick-prompts">
-              <button class="quick-chip" data-logistics="Qizil statusdagi hududlar ro'yxati">🚨 Qizil hududlar</button>
-              <button class="quick-chip" data-logistics="Eng optimal marshrutni hisobla">🗺️ Optimal yo'l</button>
-              <button class="quick-chip" data-logistics="Safar hisobotini shakllantir">📋 Safar hisoboti</button>
+              <button class="quick-chip" data-logistics="Qizil statusdagi hududlar ro'yxati">Qizil hududlar</button>
+              <button class="quick-chip" data-logistics="Eng optimal marshrutni hisobla">Optimal yo'l</button>
+              <button class="quick-chip" data-logistics="Safar hisobotini shakllantir">Safar hisoboti</button>
             </div>
 
             <div class="chat-footer">
               <form class="chat-form" id="logisticsChatForm">
                 <input type="text" id="logisticsChatInput" class="chat-input" placeholder="Buyruq kiriting..." autocomplete="off">
-                <button type="submit" class="btn-send" style="background: var(--cyan);">➤</button>
+                <button type="submit" class="btn-send">
+                  <svg class="icon-svg" viewBox="0 0 24 24"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
               </form>
             </div>
           </div>
@@ -700,10 +785,12 @@
           <div class="reports-card" style="height: 440px; overflow-y: auto;">
             <div class="reports-header">
               <div class="card-title-sm">
-                <span>📋</span> Safarlar Hisoboti
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Safarlar Hisoboti</span>
               </div>
               <button class="btn-secondary" id="exportReportBtn" style="padding: 6px 12px; font-size: 12px;">
-                📥 CSV
+                <svg class="icon-svg" style="width:13px; height:13px;" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>CSV</span>
               </button>
             </div>
 
@@ -754,8 +841,11 @@
   <div class="modal-backdrop" id="shareModal">
     <div class="modal-box">
       <button class="modal-close" id="closeShareModalBtn">✕</button>
-      <h3><span>📢</span> Qo'shnilarni Eko-Safga Chorlang!</h3>
-      <p>50 kishilik marraga tezroq erishish va Qahramonlarimizni chaqirish uchun havolani mahalla guruhiga ulashing.</p>
+      <h3>
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span>Qo'shnilarni Eko-Safga Chorlang</span>
+      </h3>
+      <p>50 kishilik marraga tezroq erishish va xizmatni chaqirish uchun havolani mahalla guruhiga ulashing.</p>
       
       <div class="share-link-input-wrap">
         <input type="text" class="share-input" id="shareLinkInput" value="https://callourhero.eco/join/navroz-mfy" readonly>
@@ -764,7 +854,8 @@
 
       <div style="display:flex; gap:10px;">
         <a href="https://t.me/share/url?url=https://callourhero.eco/join&text=Qo%27shnilar%2C%20Call%20Our%20Hero%20orqali%20mahallamizda%2050%20kishi%20yig%27ib%2C%20chiqindilarni%20saralab%20topshiramiz!" target="_blank" class="btn-social tg">
-          <span>✈️</span> Telegramda Ulashish
+          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <span>Telegramda Ulashish</span>
         </a>
       </div>
     </div>
@@ -774,7 +865,10 @@
   <div class="modal-backdrop" id="newReportModal">
     <div class="modal-box">
       <button class="modal-close" id="closeNewReportModalBtn">✕</button>
-      <h3><span>📝</span> Yangi Safar Hisoboti Qo'shish</h3>
+      <h3>
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Yangi Safar Hisoboti</span>
+      </h3>
       <p>Bajarilgan missiya natijalarini kiriting.</p>
       
       <form id="newReportForm" style="display: flex; flex-direction: column; gap: 14px;">
@@ -797,7 +891,8 @@
           <input type="number" id="reportHouseholdsInput" class="form-control" placeholder="Masalan: 50" required style="width: 100%; margin-top: 4px;">
         </div>
         <button type="submit" class="btn-primary" style="margin-top: 6px; justify-content: center;">
-          <span>✅</span> Saqlash
+          <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Saqlash</span>
         </button>
       </form>
     </div>
@@ -807,18 +902,22 @@
   <div class="modal-backdrop" id="otpModal">
     <div class="modal-box">
       <button class="modal-close" id="closeOtpModalBtn">✕</button>
-      <h3><span>📱</span> SMS Tasdiqlash Kodi</h3>
+      <h3>
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>SMS Tasdiqlash Kodi</span>
+      </h3>
       <p>Raqamingizga 4 xonali bir martalik tasdiqlash kodi yuborildi.</p>
       
       <div style="display:flex; justify-content:center; gap:12px; margin: 20px 0;">
-        <input type="text" maxlength="1" class="form-control otp-digit" value="7" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;" autofocus>
-        <input type="text" maxlength="1" class="form-control otp-digit" value="2" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;">
-        <input type="text" maxlength="1" class="form-control otp-digit" value="8" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;">
-        <input type="text" maxlength="1" class="form-control otp-digit" value="4" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;">
+        <input type="text" maxlength="1" class="form-control otp-digit" value="7" style="width:50px; height:54px; text-align:center; font-size:20px; font-weight:800;" autofocus>
+        <input type="text" maxlength="1" class="form-control otp-digit" value="2" style="width:50px; height:54px; text-align:center; font-size:20px; font-weight:800;">
+        <input type="text" maxlength="1" class="form-control otp-digit" value="8" style="width:50px; height:54px; text-align:center; font-size:20px; font-weight:800;">
+        <input type="text" maxlength="1" class="form-control otp-digit" value="4" style="width:50px; height:54px; text-align:center; font-size:20px; font-weight:800;">
       </div>
 
       <button type="button" class="btn-role-enter green" id="verifyOtpBtn">
-        <span>✅</span> Kodni Tasdiqlash & Kirish
+        <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Kodni Tasdiqlash & Kirish</span>
       </button>
     </div>
   </div>
