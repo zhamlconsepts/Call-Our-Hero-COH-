@@ -3,38 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Call Our Hero (COH) — Ekologik Aqlli Yordamchi & Logistika Platformasi</title>
-  <meta name="description" content="Call Our Hero (COH) — chiqindilarni saralash, 50 kishilik jamoaviy birdamlik va tozalik qahramonlarini tezkor chaqirish platformasi.">
+  <title>Call Our Hero (COH) — Aqlli Eko-Logistika & Mahalla Hamjamiyati</title>
+  <meta name="description" content="Call Our Hero (COH) — 50 kishilik jamoaviy birlik orqali chiqindilarni saralash va tezkor ekologik qahramonlarni chaqirish platformasi.">
   <link rel="stylesheet" href="main.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦸‍♂️</text></svg>">
 </head>
 <body>
 
-  <!-- ================= 1. LOGIN / ROLE SELECTION GATEWAY ================= -->
+  <!-- ================= 1. ENTERPRISE AUTH / LOGIN GATEWAY ================= -->
   <section class="login-screen" id="loginScreen">
     <div class="login-gateway-box">
       
+      <!-- Brand & Header -->
       <div class="login-header">
         <div class="login-brand-badge">
-          <span>🦸‍♂️</span> Call Our Hero • Eko-Tizim
+          <span class="live-dot"></span>
+          <span>🦸‍♂️ Call Our Hero • Smart Eko-Tizim v2.4</span>
         </div>
         <h1 class="login-title">
           Toza Mahalla Uchun <span>Birlashamiz!</span>
         </h1>
         <p class="login-sub">
-          Davom etish uchun o'z yo'nalishingizni (Aholi yoki Xodimlar/Logistika) tanlang:
+          O'zbekistondagi ilk 50 kishilik jamoaviy eko-birlik va aqlli chiqindi logistikasi boshqaruv markaziga xush kelibsiz.
         </p>
       </div>
 
-      <!-- Two Split Cards -->
-      <div class="role-split-grid">
+      <!-- Auth Switcher Tabs -->
+      <div class="auth-tabs-bar">
+        <button type="button" class="auth-tab-btn active" id="tabCitizenBtn">
+          <span>🏡</span> Aholi Portali
+        </button>
+        <button type="button" class="auth-tab-btn" id="tabWorkerBtn">
+          <span>⚡</span> Dispetcher & Xodimlar
+        </button>
+        <button type="button" class="auth-tab-btn" id="tabOneIdBtn">
+          <span>🏛️</span> OneID / E-Gov
+        </button>
+      </div>
+
+      <!-- Split Cards Container -->
+      <div class="role-split-grid" id="authFormsContainer">
         
         <!-- Role 1: Citizen / Aholi -->
-        <div class="role-card citizen">
+        <div class="role-card citizen" id="citizenAuthCard">
           <div class="role-card-header">
             <div class="role-icon-box">🏡</div>
             <div class="role-title-text">
-              <h3>Aholi Portali</h3>
+              <h3>Aholi & Xonadon Portali</h3>
               <span>Mahalla Eko-Hamjamiyati</span>
             </div>
           </div>
@@ -44,9 +59,24 @@
           
           <form class="role-form" id="citizenLoginForm">
             <div class="form-group">
-              <label for="citizenNameInput">Ismingiz / Xonadon egasi:</label>
-              <input type="text" id="citizenNameInput" class="form-control" placeholder="Masalan: Sardor Aliyev" value="Sardor Aliyev" required>
+              <label for="citizenNameInput">F.I.SH / Xonadon egasi:</label>
+              <div class="input-with-icon">
+                <span class="input-icon-prefix">👤</span>
+                <input type="text" id="citizenNameInput" class="form-control" placeholder="Masalan: Sardor Aliyev" value="Sardor Aliyev" required>
+              </div>
             </div>
+
+            <div class="form-group">
+              <label for="citizenPhoneInput">
+                <span>Telefon raqamingiz:</span>
+                <span class="hint-link" id="requestOtpLink">SMS-kod orqali</span>
+              </label>
+              <div class="input-with-icon">
+                <span class="input-icon-prefix">📱</span>
+                <input type="tel" id="citizenPhoneInput" class="form-control" placeholder="+998 (90) 123-45-67" value="+998 (90) 777-10-20" required>
+              </div>
+            </div>
+
             <div class="form-group">
               <label for="citizenMahallaSelect">Mahallangizni tanlang:</label>
               <select id="citizenMahallaSelect" class="form-control">
@@ -57,44 +87,93 @@
                 <option value="buyukipak">"Buyuk Ipak Yo'li" MFY</option>
               </select>
             </div>
-            <button type="submit" class="btn-role-enter green">
-              <span>🌱</span> Aholi Sifatida Kirish
+
+            <div class="form-options-row">
+              <label class="custom-checkbox-wrap">
+                <input type="checkbox" id="citizenRememberMe" checked>
+                <span>Meni eslab qol</span>
+              </label>
+              <span class="hint-link" id="citizenQuickFill">Tezkor to'ldirish</span>
+            </div>
+
+            <button type="submit" class="btn-role-enter green" id="citizenSubmitBtn">
+              <span>🌱</span> Aholi Sifatida Tizimga Kirish
             </button>
           </form>
         </div>
 
         <!-- Role 2: Logistics / Workers -->
-        <div class="role-card worker">
+        <div class="role-card worker" id="workerAuthCard">
           <div class="role-card-header">
             <div class="role-icon-box">⚡</div>
             <div class="role-title-text">
-              <h3>Xodimlar & Logistika</h3>
-              <span>COH Dispetcher & Brigada</span>
+              <h3>Dispetcher & Xodimlar</h3>
+              <span>COH Operatsion Boshqaruv</span>
             </div>
           </div>
           <p class="role-desc">
-            <strong>50+ to'plangan Qizil Statusdagi</strong> hududlarni nazorat qiling, avtoparkni boshqaring va AI yordamida optimal marshrutlarni belgilang.
+            <strong>50+ to'plangan Qizil Statusdagi</strong> hududlarni nazorat qiling, maxsus elektro avtoparkni yo'naltiring va AI marshrut tahlilidan foydalaning.
           </p>
 
           <form class="role-form" id="workerLoginForm">
             <div class="form-group">
-              <label for="workerIdInput">Xodim / Dispetcher ID:</label>
-              <input type="text" id="workerIdInput" class="form-control" placeholder="Masalan: HERO-07" value="HERO-DISPATCH-01" required>
+              <label for="workerIdInput">Dispetcher / Operator ID:</label>
+              <div class="input-with-icon">
+                <span class="input-icon-prefix">🛡️</span>
+                <input type="text" id="workerIdInput" class="form-control" placeholder="Masalan: HERO-DISPATCH-01" value="HERO-DISPATCH-01" required>
+              </div>
             </div>
+
             <div class="form-group">
-              <label for="workerRoleSelect">Lavozim:</label>
+              <label for="workerPassInput">
+                <span>Xizmat Kaliti / Parol:</span>
+                <span class="hint-link" id="togglePassVisibility">Ko'rsatish</span>
+              </label>
+              <div class="input-with-icon">
+                <span class="input-icon-prefix">🔒</span>
+                <input type="password" id="workerPassInput" class="form-control" value="hero•dispatch•2026" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="workerRoleSelect">Lavozim / Vazifa:</label>
               <select id="workerRoleSelect" class="form-control">
                 <option value="dispatcher">Operatsion Dispetcher AI</option>
                 <option value="driver">Hero Truck Haydovchisi</option>
                 <option value="lead">Logistika Bo'lim Boshlig'i</option>
               </select>
             </div>
-            <button type="submit" class="btn-role-enter cyan">
-              <span>⚡</span> Tizimga Kirish (Dispatcher Hub)
+
+            <div class="form-options-row">
+              <label class="custom-checkbox-wrap">
+                <input type="checkbox" id="workerRememberMe" checked>
+                <span>Xavfsiz sessiyani saqlash</span>
+              </label>
+              <span class="hint-link" id="workerQuickFill">Demo kirish</span>
+            </div>
+
+            <button type="submit" class="btn-role-enter cyan" id="workerSubmitBtn">
+              <span>⚡</span> Dispetcher Hub-ga Kirish
             </button>
           </form>
         </div>
 
+      </div>
+
+      <!-- Trust & Security Badges -->
+      <div class="security-trust-bar">
+        <div class="trust-item">
+          <span class="icon">🔒</span>
+          <span>256-Bit SSL Shifrlangan Aloqa</span>
+        </div>
+        <div class="trust-item">
+          <span class="icon">🏛️</span>
+          <span>E-Mahalla & Ekologiya Vazirligi Bilan Integratsiya</span>
+        </div>
+        <div class="trust-item">
+          <span class="quick-demo-pill" id="quickDemoCitizenBtn">⚡ Demo Aholi</span>
+          <span class="quick-demo-pill" id="quickDemoDispatchBtn">⚡ Demo Dispetcher</span>
+        </div>
       </div>
 
     </div>
@@ -103,7 +182,7 @@
   <!-- ================= 2. MAIN APPLICATION (AFTER LOGIN) ================= -->
   <div class="main-app-wrap" id="mainAppWrap">
     
-    <!-- Top Navbar -->
+    <!-- Top Sticky Navbar -->
     <header class="navbar">
       <div class="container">
         <div class="nav-inner">
@@ -125,7 +204,7 @@
               <span>🌱</span> Aholi Portali
             </button>
             <button class="mode-btn logistics" id="logisticsPortalBtn" data-target="logistics-view">
-              <span>⚡</span> Logistika & Tizim
+              <span>⚡</span> Dispetcher & Tizim
             </button>
           </div>
 
@@ -133,7 +212,7 @@
           <div class="nav-actions">
             <div class="user-badge-pill" id="userBadgePill">
               <span class="dot"></span>
-              <span id="navUserName">Sardor Aliyev</span>
+              <span id="navUserName">Sardor Aliyev (Navro'z)</span>
             </div>
             <button class="icon-btn" id="soundToggleBtn" title="Ovoz (Yoqish/O'chirish)">
               <span id="soundIcon">🔊</span>
@@ -154,7 +233,6 @@
       <section class="hero-section">
         <div class="container">
           <div class="hero-banner-card">
-            <div class="hero-banner-bg"></div>
             <div class="hero-content">
               <div class="hero-tag">
                 <span>🌟</span> Jamoaviy Tozalik Harakati
@@ -164,7 +242,7 @@
                 <span class="highlight">Qahramonimizni Chaqiring!</span>
               </h1>
               <p class="hero-desc">
-                Mahallangizda <strong>50 kishining chiqindisi</strong> yig'ilsagina maxsus xizmat xodimlari yetib keladi. Qo'shnilar bilan hamkorlik qiling va toza mahallaga birga erishing!
+                Mahallangizda <strong>50 kishining saralangan chiqindisi</strong> yig'ilsagina maxsus eko-xizmat mashinasi zudlik bilan yetib keladi. Qo'shnilar bilan birdam bo'ling va toza mahallaga birga erishing!
               </p>
               <div class="hero-cta-group">
                 <button class="btn-primary" id="scrollTrackerBtn">
@@ -175,6 +253,7 @@
                 </button>
               </div>
             </div>
+
             <div class="hero-stats-side">
               <div class="stat-glass-box">
                 <div class="stat-icon-wrap green">🚛</div>
@@ -209,7 +288,7 @@
             <div class="tracker-header">
               <div class="tracker-header-left">
                 <h2><span>🎯</span> 50 Kishilik "Call Our Hero" Marraga Intilish</h2>
-                <p>Har bir hududda 50 ta ariza yig'ilishi bilan tozalik xizmati yo'lga chiqadi.</p>
+                <p>Har bir hududda 50 ta ariza yig'ilishi bilan tozalik xizmati zudlik bilan yo'lga chiqadi.</p>
               </div>
               <div class="mahalla-select-wrap">
                 <label for="mahallaSelector">Hududingiz:</label>
@@ -245,7 +324,7 @@
                 </div>
 
                 <div class="tracker-notice-box">
-                  <span style="font-size: 18px;">💡</span>
+                  <span style="font-size: 20px;">💡</span>
                   <div id="trackerRemainingText">
                     Sizning mahallangizda hozircha <strong>38/50 kishi</strong> to'plandi. Qahramonlar kelishi uchun yana <strong>12 kishi</strong> qoldi!
                   </div>
@@ -332,8 +411,8 @@
             </div>
             <form class="classifier-form" id="aiClassifierForm">
               <input type="text" id="wasteSearchInput" class="classifier-input" placeholder="Masalan: Baklashka, banan po'sti, batareyka..." required>
-              <button type="submit" class="btn-primary" style="padding: 10px 18px;">
-                <span>🔍</span> Tekshirish
+              <button type="submit" class="btn-primary" style="padding: 11px 20px;">
+                <span>🔍</span> Aniqlash
               </button>
             </form>
             <div class="classifier-result-modal" id="classifierResultBox"></div>
@@ -698,29 +777,49 @@
       <h3><span>📝</span> Yangi Safar Hisoboti Qo'shish</h3>
       <p>Bajarilgan missiya natijalarini kiriting.</p>
       
-      <form id="newReportForm" style="display: flex; flex-direction: column; gap: 12px;">
+      <form id="newReportForm" style="display: flex; flex-direction: column; gap: 14px;">
         <div>
-          <label style="font-size: 12px; color: var(--text-muted);">Hudud nomi:</label>
+          <label style="font-size: 12.5px; color: var(--text-muted);">Hudud nomi:</label>
           <input type="text" id="reportAreaInput" class="form-control" placeholder="Masalan: Chilonzor-9" required style="width: 100%; margin-top: 4px;">
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div>
-            <label style="font-size: 12px; color: var(--text-muted);">Chiqindi (kg):</label>
+            <label style="font-size: 12.5px; color: var(--text-muted);">Chiqindi (kg):</label>
             <input type="number" id="reportKgInput" class="form-control" placeholder="Masalan: 550" required style="width: 100%; margin-top: 4px;">
           </div>
           <div>
-            <label style="font-size: 12px; color: var(--text-muted);">Vaqt (daq):</label>
+            <label style="font-size: 12.5px; color: var(--text-muted);">Vaqt (daq):</label>
             <input type="number" id="reportTimeInput" class="form-control" placeholder="Masalan: 35" required style="width: 100%; margin-top: 4px;">
           </div>
         </div>
         <div>
-          <label style="font-size: 12px; color: var(--text-muted);">Qamrab olingan xonadonlar:</label>
+          <label style="font-size: 12.5px; color: var(--text-muted);">Qamrab olingan xonadonlar:</label>
           <input type="number" id="reportHouseholdsInput" class="form-control" placeholder="Masalan: 50" required style="width: 100%; margin-top: 4px;">
         </div>
         <button type="submit" class="btn-primary" style="margin-top: 6px; justify-content: center;">
           <span>✅</span> Saqlash
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- OTP SMS Verification Modal Simulation -->
+  <div class="modal-backdrop" id="otpModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeOtpModalBtn">✕</button>
+      <h3><span>📱</span> SMS Tasdiqlash Kodi</h3>
+      <p>Raqamingizga 4 xonali bir martalik tasdiqlash kodi yuborildi.</p>
+      
+      <div style="display:flex; justify-content:center; gap:12px; margin: 20px 0;">
+        <input type="text" maxlength="1" class="form-control otp-digit" value="7" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;" autofocus>
+        <input type="text" maxlength="1" class="form-control otp-digit" value="2" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;">
+        <input type="text" maxlength="1" class="form-control otp-digit" value="8" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;">
+        <input type="text" maxlength="1" class="form-control otp-digit" value="4" style="width:50px; height:56px; text-align:center; font-size:22px; font-weight:800;">
+      </div>
+
+      <button type="button" class="btn-role-enter green" id="verifyOtpBtn">
+        <span>✅</span> Kodni Tasdiqlash & Kirish
+      </button>
     </div>
   </div>
 

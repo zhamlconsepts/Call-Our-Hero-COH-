@@ -1,5 +1,6 @@
 /* =========================================================
    CALL OUR HERO (COH) — MAIN JAVASCRIPT ENGINE
+   Advanced Enterprise Dark System & Real-Time Logic
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -89,51 +90,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = getAudioCtx();
     if (!ctx) return;
 
-    const now = ctx.currentTime;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
 
-    if (type === 'click') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(700, now);
-      osc.frequency.exponentialRampToValueAtTime(350, now + 0.06);
-      gain.gain.setValueAtTime(0.12, now);
-      gain.gain.linearRampToValueAtTime(0.01, now + 0.06);
-      osc.start(now);
-      osc.stop(now + 0.06);
-    } else if (type === 'success') {
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(523.25, now);
-      osc.frequency.setValueAtTime(659.25, now + 0.07);
-      osc.frequency.setValueAtTime(783.99, now + 0.14);
-      gain.gain.setValueAtTime(0.15, now);
-      gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
-      osc.start(now);
-      osc.stop(now + 0.25);
-    } else if (type === 'hero_fanfare') {
-      const notes = [523.25, 659.25, 783.99, 1046.50];
-      notes.forEach((freq, i) => {
-        const noteOsc = ctx.createOscillator();
-        const noteGain = ctx.createGain();
-        noteOsc.connect(noteGain);
-        noteGain.connect(ctx.destination);
-        noteOsc.type = 'sine';
-        noteOsc.frequency.setValueAtTime(freq, now + i * 0.09);
-        noteGain.gain.setValueAtTime(0.2, now + i * 0.09);
-        noteGain.gain.linearRampToValueAtTime(0.01, now + i * 0.09 + 0.22);
-        noteOsc.start(now + i * 0.09);
-        noteOsc.stop(now + i * 0.09 + 0.22);
-      });
-    } else if (type === 'alert') {
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(440, now);
-      osc.frequency.setValueAtTime(880, now + 0.09);
-      gain.gain.setValueAtTime(0.15, now);
-      gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
-      osc.start(now);
-      osc.stop(now + 0.2);
+      if (type === 'click') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.exponentialRampToValueAtTime(380, now + 0.05);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.linearRampToValueAtTime(0.01, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
+      } else if (type === 'success') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.07);
+        osc.frequency.setValueAtTime(783.99, now + 0.14);
+        gain.gain.setValueAtTime(0.14, now);
+        gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      } else if (type === 'hero_fanfare') {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, i) => {
+          const noteOsc = ctx.createOscillator();
+          const noteGain = ctx.createGain();
+          noteOsc.connect(noteGain);
+          noteGain.connect(ctx.destination);
+          noteOsc.type = 'sine';
+          noteOsc.frequency.setValueAtTime(freq, now + i * 0.09);
+          noteGain.gain.setValueAtTime(0.2, now + i * 0.09);
+          noteGain.gain.linearRampToValueAtTime(0.01, now + i * 0.09 + 0.22);
+          noteOsc.start(now + i * 0.09);
+          noteOsc.stop(now + i * 0.09 + 0.22);
+        });
+      } else if (type === 'alert') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.setValueAtTime(880, now + 0.09);
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
+        osc.start(now);
+        osc.stop(now + 0.2);
+      }
+    } catch (e) {
+      // Audio fallback
     }
   }
 
@@ -153,20 +158,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
       toast.style.opacity = '0';
-      toast.style.transform = 'translateY(8px)';
+      toast.style.transform = 'translateY(10px)';
       toast.style.transition = 'all 0.25s ease';
       setTimeout(() => toast.remove(), 250);
-    }, 3500);
+    }, 3600);
   }
 
-  // ================= DOM ELEMENTS =================
+  // ================= DOM REFERENCES =================
   const loginScreen = document.getElementById('loginScreen');
   const mainAppWrap = document.getElementById('mainAppWrap');
   const citizenLoginForm = document.getElementById('citizenLoginForm');
   const workerLoginForm = document.getElementById('workerLoginForm');
+  const citizenSubmitBtn = document.getElementById('citizenSubmitBtn');
+  const workerSubmitBtn = document.getElementById('workerSubmitBtn');
+
+  const tabCitizenBtn = document.getElementById('tabCitizenBtn');
+  const tabWorkerBtn = document.getElementById('tabWorkerBtn');
+  const tabOneIdBtn = document.getElementById('tabOneIdBtn');
+  const citizenAuthCard = document.getElementById('citizenAuthCard');
+  const workerAuthCard = document.getElementById('workerAuthCard');
+
+  const quickDemoCitizenBtn = document.getElementById('quickDemoCitizenBtn');
+  const quickDemoDispatchBtn = document.getElementById('quickDemoDispatchBtn');
+  const citizenQuickFill = document.getElementById('citizenQuickFill');
+  const workerQuickFill = document.getElementById('workerQuickFill');
+
+  const requestOtpLink = document.getElementById('requestOtpLink');
+  const otpModal = document.getElementById('otpModal');
+  const closeOtpModalBtn = document.getElementById('closeOtpModalBtn');
+  const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+  const togglePassVisibility = document.getElementById('togglePassVisibility');
+  const workerPassInput = document.getElementById('workerPassInput');
+
   const navUserName = document.getElementById('navUserName');
   const logoutBtn = document.getElementById('logoutBtn');
-
   const citizenPortalBtn = document.getElementById('citizenPortalBtn');
   const logisticsPortalBtn = document.getElementById('logisticsPortalBtn');
   const citizenView = document.getElementById('citizen-view');
@@ -216,56 +241,169 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeNewReportModalBtn = document.getElementById('closeNewReportModalBtn');
   const newReportForm = document.getElementById('newReportForm');
 
-  // ================= 1. LOGIN & ROLE ROUTING =================
-  citizenLoginForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('citizenNameInput').value.trim() || 'Aholi vakili';
-    const mahallaKey = document.getElementById('citizenMahallaSelect').value;
+  // ================= 1. AUTHENTICATION & LOGIN TABS =================
+
+  // Switch Auth Tabs
+  function setAuthTab(activeTab) {
+    playSound('click');
+    [tabCitizenBtn, tabWorkerBtn, tabOneIdBtn].forEach(b => b?.classList.remove('active'));
+    
+    if (activeTab === 'citizen') {
+      tabCitizenBtn?.classList.add('active');
+      if (citizenAuthCard) citizenAuthCard.style.opacity = '1';
+      if (workerAuthCard) workerAuthCard.style.opacity = '0.7';
+      citizenAuthCard?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else if (activeTab === 'worker') {
+      tabWorkerBtn?.classList.add('active');
+      if (workerAuthCard) workerAuthCard.style.opacity = '1';
+      if (citizenAuthCard) citizenAuthCard.style.opacity = '0.7';
+      workerAuthCard?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else if (activeTab === 'oneid') {
+      tabOneIdBtn?.classList.add('active');
+      showToast('🏛️ OneID E-Gov avtorizatsiya tizimiga yo\'naltirilmoqda...', 'info');
+      setTimeout(() => {
+        loginAsCitizen('Azizbek Rahmatov (OneID)', 'navroz');
+      }, 700);
+    }
+  }
+
+  tabCitizenBtn?.addEventListener('click', () => setAuthTab('citizen'));
+  tabWorkerBtn?.addEventListener('click', () => setAuthTab('worker'));
+  tabOneIdBtn?.addEventListener('click', () => setAuthTab('oneid'));
+
+  // Password Visibility Toggle
+  togglePassVisibility?.addEventListener('click', () => {
+    if (workerPassInput) {
+      const isPass = workerPassInput.type === 'password';
+      workerPassInput.type = isPass ? 'text' : 'password';
+      togglePassVisibility.textContent = isPass ? 'Yashirish' : 'Ko\'rsatish';
+    }
+  });
+
+  // Login as Citizen helper
+  function loginAsCitizen(name, mahallaKey) {
+    const finalName = name || 'Sardor Aliyev';
+    const finalMahalla = mahallaKey || 'navroz';
 
     state.currentUser = {
       role: 'citizen',
-      name: name,
-      mahallaKey: mahallaKey
+      name: finalName,
+      mahallaKey: finalMahalla
     };
-    state.currentMahallaKey = mahallaKey;
-    if (mahallaSelector) mahallaSelector.value = mahallaKey;
+    state.currentMahallaKey = finalMahalla;
+    if (mahallaSelector) mahallaSelector.value = finalMahalla;
 
-    navUserName.textContent = `${name} (${state.mahallas[mahallaKey].shortName})`;
-    
+    if (navUserName) {
+      navUserName.textContent = `${finalName} (${state.mahallas[finalMahalla].shortName})`;
+    }
+
     playSound('success');
-    loginScreen.classList.add('hidden');
-    mainAppWrap.classList.add('active');
+    loginScreen?.classList.add('hidden');
+    mainAppWrap?.classList.add('active');
     switchPortal('citizen');
     updateMahallaTrackerUI();
-    showToast(`Xush kelibsiz, ${name}! 🌱`, 'success');
-  });
+    showToast(`Xush kelibsiz, ${finalName}! 🌱`, 'success');
+  }
 
-  workerLoginForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const workerId = document.getElementById('workerIdInput').value.trim() || 'HERO-DISPATCH';
-    const workerRole = document.getElementById('workerRoleSelect').value;
-
+  // Login as Worker helper
+  function loginAsWorker(workerId, role) {
+    const finalId = workerId || 'HERO-DISPATCH-01';
     state.currentUser = {
       role: 'worker',
-      name: workerId,
-      subRole: workerRole
+      name: finalId,
+      subRole: role || 'dispatcher'
     };
 
-    navUserName.textContent = `⚡ ${workerId}`;
-    
+    if (navUserName) {
+      navUserName.textContent = `⚡ ${finalId}`;
+    }
+
     playSound('success');
-    loginScreen.classList.add('hidden');
-    mainAppWrap.classList.add('active');
+    loginScreen?.classList.add('hidden');
+    mainAppWrap?.classList.add('active');
     switchPortal('logistics');
-    showToast(`Dispetcher tizimi faollashdi. ID: ${workerId}`, 'info');
+    showToast(`Dispetcher tizimi faollashdi. ID: ${finalId}`, 'info');
+  }
+
+  // Submit Citizen Form
+  citizenLoginForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('citizenNameInput')?.value.trim() || 'Aholi vakili';
+    const mahallaKey = document.getElementById('citizenMahallaSelect')?.value || 'navroz';
+
+    if (citizenSubmitBtn) {
+      citizenSubmitBtn.innerHTML = '<span>⏳</span> Tekshirilmoqda...';
+      citizenSubmitBtn.disabled = true;
+    }
+
+    setTimeout(() => {
+      if (citizenSubmitBtn) {
+        citizenSubmitBtn.innerHTML = '<span>🌱</span> Aholi Sifatida Tizimga Kirish';
+        citizenSubmitBtn.disabled = false;
+      }
+      loginAsCitizen(name, mahallaKey);
+    }, 400);
+  });
+
+  // Submit Worker Form
+  workerLoginForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const workerId = document.getElementById('workerIdInput')?.value.trim() || 'HERO-DISPATCH-01';
+    const workerRole = document.getElementById('workerRoleSelect')?.value || 'dispatcher';
+
+    if (workerSubmitBtn) {
+      workerSubmitBtn.innerHTML = '<span>⏳</span> Autentifikatsiya...';
+      workerSubmitBtn.disabled = true;
+    }
+
+    setTimeout(() => {
+      if (workerSubmitBtn) {
+        workerSubmitBtn.innerHTML = '<span>⚡</span> Dispetcher Hub-ga Kirish';
+        workerSubmitBtn.disabled = false;
+      }
+      loginAsWorker(workerId, workerRole);
+    }, 400);
+  });
+
+  // Quick Demo Buttons
+  quickDemoCitizenBtn?.addEventListener('click', () => loginAsCitizen('Sardor Aliyev', 'navroz'));
+  quickDemoDispatchBtn?.addEventListener('click', () => loginAsWorker('HERO-DISPATCH-01', 'dispatcher'));
+  citizenQuickFill?.addEventListener('click', () => {
+    playSound('click');
+    const nameIn = document.getElementById('citizenNameInput');
+    if (nameIn) nameIn.value = 'Malika Karimova';
+    showToast('Namuna ma\'lumotlari kiritildi', 'info');
+  });
+  workerQuickFill?.addEventListener('click', () => {
+    playSound('click');
+    loginAsWorker('HERO-LEAD-CHIEF', 'lead');
+  });
+
+  // OTP Modal
+  requestOtpLink?.addEventListener('click', () => {
+    playSound('click');
+    otpModal?.classList.add('active');
+  });
+
+  closeOtpModalBtn?.addEventListener('click', () => {
+    otpModal?.classList.remove('active');
+  });
+
+  otpModal?.addEventListener('click', (e) => {
+    if (e.target === otpModal) otpModal.classList.remove('active');
+  });
+
+  verifyOtpBtn?.addEventListener('click', () => {
+    otpModal?.classList.remove('active');
+    loginAsCitizen('Tasdiqlangan Foydalanuvchi', 'navroz');
   });
 
   // Logout / Switch Role
   logoutBtn?.addEventListener('click', () => {
     playSound('click');
     state.currentUser = null;
-    mainAppWrap.classList.remove('active');
-    loginScreen.classList.remove('hidden');
+    mainAppWrap?.classList.remove('active');
+    loginScreen?.classList.remove('hidden');
     showToast('Tizimdan chiqildi. Qaytadan kirishingiz mumkin.', 'info');
   });
 
@@ -293,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
   soundToggleBtn?.addEventListener('click', () => {
     state.soundEnabled = !state.soundEnabled;
     if (soundIcon) soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
-    showToast(state.soundEnabled ? 'Ovoz yoqildi' : 'Ovoz o\'chirildi', 'info');
+    showToast(state.soundEnabled ? 'Ovoz effektlari yoqildi' : 'Ovoz effektlari o\'chirildi', 'info');
   });
 
   // Scroll to tracker
@@ -302,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('tracker-section')?.scrollIntoView({ behavior: 'smooth' });
   });
 
-  // ================= 2. MAHALLA TRACKER (50-PERSON RULE) =================
+  // ================= 2. MAHALLA TRACKER (50-PERSON GOAL) =================
   function updateMahallaTrackerUI() {
     const current = state.mahallas[state.currentMahallaKey];
     if (!current) return;
@@ -346,7 +484,9 @@ document.addEventListener('DOMContentLoaded', () => {
   mahallaSelector?.addEventListener('change', (e) => {
     state.currentMahallaKey = e.target.value;
     if (state.currentUser && state.currentUser.role === 'citizen') {
-      navUserName.textContent = `${state.currentUser.name} (${state.mahallas[state.currentMahallaKey].shortName})`;
+      if (navUserName) {
+        navUserName.textContent = `${state.currentUser.name} (${state.mahallas[state.currentMahallaKey].shortName})`;
+      }
     }
     playSound('click');
     updateMahallaTrackerUI();
